@@ -2,18 +2,31 @@
 App({
   onLaunch: function () {
     if (!wx.cloud) {
-      console.error('请使用 2.2.3 或以上的基础库以使用云能力');
+      wx.updateWeChatApp({});
     } else {
+      let info = wx.getAccountInfoSync();
       wx.cloud.init({
-        // env 参数说明：
-        //   env 参数决定接下来小程序发起的云开发调用（wx.cloud.xxx）会默认请求到哪个云环境的资源
-        //   此处请填入环境 ID, 环境 ID 可打开云控制台查看
-        //   如不填则使用默认环境（第一个创建的环境）
-        // env: 'my-env-id',
+        // env:
+        //   info.miniProgram.envVersion === "release"
+        //     ? "cloud1-2gwnfczh6cc52b6a"
+        //     : "test-0g483vy600dcfd55",
         traceUser: true,
       });
     }
-
-    this.globalData = {};
-  }
+    let updateManger = wx.getUpdateManager();
+    updateManger.onCheckForUpdate(function (res) {});
+    updateManger.onUpdateReady(function () {
+      wx.showModal({
+        titl: "更新提示",
+        content: "新版本已经准备好，是否重启？",
+        success(res) {
+          if (res.confirm) {
+            updateManager.applyUpdate();
+          }
+        },
+      });
+    });
+  },
+  // 全局数据 可在所有页面用getApp（）访问到这个对象
+  globalData: {},
 });

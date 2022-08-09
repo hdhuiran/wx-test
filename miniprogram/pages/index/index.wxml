@@ -1,9 +1,18 @@
-<view> 
-  <view class="cover">
-        <image src="/images/logo.png" class="logo" />
-  </view>
-  <view class="title">{{hello}}</view>
-  <view class="choose">
+<view>
+    <navigatior url="/pages/webview/index"  class="mg40 card block colorCard">
+        <!-- <view >123</view> -->
+        <view class="fs36 mgb20">元岛社区介绍：</view>
+        <view class="fs28 mgb10">元岛是一个学习型DAO (分布式自治组织) 社区,元岛有永久免费的新时代课程和团结互助的社群，你可以将元岛视为游戏，写作业和参与活动都能获得经验值或积分，等级高的同学不仅能登上榜单，更能获得实际奖励。</view>
+        <view class="fs28 mgb10">元岛的所有权通过代码和数据归属于所有成员</view>
+        <view class="fs28 mgb10">欢迎来到 web3.0时代</view>
+        <view class="fs28 tar">点击查看详情</view>
+    </navigatior>
+   <!-- <view wx:if="{{!groupId}}" class="desc">请在下方选择你的分组倾向</view>
+    <view wx:if="{{!groupId}}" class="desc red mg40 card block">
+        注意：元岛没有任何私下收费项目或环节，如有人私聊涉及金钱的一律视为诈骗，如有遇到请立即联系管理员。
+    </view> -->
+    <view wx:if="{{groupId}}" class="desc card">你已加入{{groupId}}小组，点击下方按钮查看小组信息</view>
+    <view class="card mg40">
         <navigator wx:if="{{!groupId}}" class="join" url="/pages/form/index">创建小组</navigator>
         <navigator wx:if="{{!groupId}}" class="join" url="/pages/list/index">加入小组</navigator>
         <navigator wx:if="{{!groupId}}" class="join" url="/pages/tip/index?type=big">
@@ -13,4 +22,14 @@
             我的小组
         </navigator>
     </view>
+   
+    <!-- <view class="text">现阶段元岛的同学们主要学习康文昌的《从零开始的编程课（Re01）》，以后也会有更多免费且优秀的课程加入进来。</view>
+    <view class="text">社群目前的主要功能是：在内部群里沟通交流，分小组互帮互助，获得作业反馈、疑难问答等。</view>
+    <view class="text">而且，当元岛未来成员变多以后，我们也会尝试多个方向，比如共创产品、对接优质企业内推组织成员、分小组承接商业项目、线下聚会等等。</view>
+    <view class="text">快来加入我们吧！</view> -->
+    <!-- <navigator url="/pages/webview/index">
+        <view class="text">更多介绍可以点击这里前往元岛官网查看：</view>
+        <view class="text link">https://www.midorg.com</view>
+    </navigator> -->
+    <view class="cover"></view>
 </view>

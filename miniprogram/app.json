@@ -3,16 +3,45 @@
     "pages/index/index",
     "pages/form/index",
     "pages/list/index",
+    "pages/group/index",
+    "pages/webview/index",
     "pages/tip/index",
-    "pages/group/index"
+    "pages/user/index",
+    "pages/community/index"
   ],
   "window": {
-    "backgroundColor": "#fff",
+    "backgroundColor": "#eee",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "盗版元岛",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#8ba3c7",
+    "navigationBarTitleText": "元岛",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#888",
+    "selectedColor": "8ba3c7",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "课程",
+        "iconPath": "/images/icon/index.png",
+        "selectedIconPath": "/images/icon/index-c.png"
+      },
+      {
+        "pagePath": "pages/community/index",
+        "text": "社区",
+        "iconPath": "/images/icon/community.png",
+        "selectedIconPath": "/images/icon/community-c.png"
+      },
+      {
+        "pagePath": "pages/user/index",
+        "text": "我的",
+        "iconPath": "/images/icon/user.png",
+        "selectedIconPath": "/images/icon/user-c.png"
+      }
+    ]
   },
   "sitemapLocation": "sitemap.json",
+
   "style": "v2"
 }

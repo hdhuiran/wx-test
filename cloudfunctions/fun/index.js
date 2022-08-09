@@ -11,7 +11,7 @@ files.map((filename) => {
 cloud.init({
   env: cloud.DYNAMIC_CURRENT_ENV,
 });
-let db = cloud.database();
+let db = cloud.database({ throwOnNotFound: false });
 
 // 云函数入口函数
 exports.main = async (event, context) => {
@@ -20,11 +20,15 @@ exports.main = async (event, context) => {
     if (typeof Fun[event.api] !== "function") {
       throw Error("np api");
     }
-    return await Fun[event.api](event.args, db, wxContext.OPENID, {
+    let data = await Fun[event.api](event.args, db, wxContext.OPENID, {
       cloud,
       appId: wxContext.APPID,
       unionId: wxContext.UNIONID,
     });
+    return {
+      success: true,
+      data,
+    };
   } catch (error) {
     console.error(error);
     return {

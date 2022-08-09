@@ -1,3 +1,4 @@
+import cf from "../../utils/cf";
 Page({
   data: {
     groupId: "",
@@ -9,21 +10,14 @@ Page({
         groupId: groupId,
       });
     } else {
-      wx.cloud
-        .callFunction({
-          name: "quickstartFunctions",
-          data: {
-            type: "getMyGroup",
-          },
-        })
-        .then((res) => {
-          if (res.result?.groupId) {
-            wx.setStorageSync("groupId", res.result.groupId);
-            this.setData({
-              groupId: res.result.groupId,
-            });
-          }
-        });
+      cf("getMyGroup", {}).then((res) => {
+        if (res.groupId) {
+          wx.setStorageSync("groupId", res.groupId);
+          this.setData({
+            groupId: res.result.groupId,
+          });
+        }
+      });
     }
   },
   onShow: function (params) {
